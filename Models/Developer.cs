@@ -8,4 +8,5 @@ public class Developer
     public string Name { get; set; } = string.Empty;
     public string? Description { get; set; }
     public List<Videogame> Videogames { get; set; } = new();
+    public List<GameEngine> GameEngines { get; set; } = new();
 }

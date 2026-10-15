@@ -17,7 +17,8 @@ public class ApplicationDbContext : DbContext
     public DbSet<Publisher> Publishers => Set<Publisher>();
     public DbSet<SubGenre> SubGenres => Set<SubGenre>();
     public DbSet<Saga> Sagas => Set<Saga>();
-    
+    public DbSet<GameEngine> GameEngines => Set<GameEngine>();
+
     // TABLAS
 
 }

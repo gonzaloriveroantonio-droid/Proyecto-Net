@@ -1,25 +1,14 @@
-using System.ComponentModel.DataAnnotations;
+using System;
 
 namespace proyecto_aspnet.Models;
 
-public enum GameEngine
+public class GameEngine
 {
-[Display(Name = "Unreal Engine")]
-UnrealEngine,
-[Display(Name = "Unity")]
-Unity,
-[Display(Name = "Godot Engine")]
-GodotEngine,
-[Display(Name = "GameMaker")]
-GameMaker,
-[Display(Name = "Phaser")]
-Phaser,
-[Display(Name = "RAGE")]
-RAGE,
-[Display(Name = "Frostbite")]
-Frosbite,
-[Display(Name = "Creation Engine")]
-CreationEngine,
-[Display(Name = "RE Engine")]
-REEngine
+    public int Id { get; set; }
+    public string Name { get; set; } = string.Empty;
+    public string? Description { get; set; }
+    public DateOnly ReleaseDate { get; set; }
+    public List<Videogame> Videogames { get; set; } = new();
+    public List<VideoConsole> VideoConsoles { get; set; } = new();
+    public List<Developer> Developers { get; set; } = new();
 }

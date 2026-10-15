@@ -11,4 +11,5 @@ public class VideoConsole
     //public IFormFile? ImageFile { get; set; }
     public decimal ReleasePrice { get; set; }
     public List<Videogame> Videogames { get; set; } = new();
+    public List<GameEngine> GameEngines { get; set; } = new();
 }

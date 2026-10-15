@@ -16,17 +16,12 @@ public class Videogame
     public Developer Developer { get; set; } = new();
     public List<Genre> Genres { get; set; } = new();
     public List<SubGenre> SubGenres { get; set; } = new();
-    public List<Language> Languages { get; set; } = new();
-    public GameEngine GameEngine { get; set; }
+    public List<Language> TextLanguages { get; set; } = new();
+    public List<Language> AudioLanguages { get; set; } = new();
     public List<VideoConsole> VideoConsoles { get; set; } = new();
     public int SagaId { get; set; }
     public Saga? Saga { get; set; }
+    public int GameEngineId { get; set; }
+    public GameEngine? GameEngine { get; set; } = new();
 
-    /*
-
-Producción: Kojima Productions
-
-Formato: 1 UMD
-Textos: Español
-Voces: Inglés*/
 }
