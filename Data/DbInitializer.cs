@@ -13,29 +13,29 @@ public static class DbInitializer
         context.Database.Migrate();
         if (context.Videogames.Any())
             return;
-            
+
         // DESARROLLADORES
         var nintendo = new Developer
         {
-            Namge = "Nintendo EPD",
+            Name = "Nintendo EPD",
             Description = "Estudio interno de desarrollo de Nintendo."
         };
 
         var gameFreak = new Developer
         {
-            Namge = "Game Freak",
+            Name = "Game Freak",
             Description = "Estudio conocido por la saga Pokemon."
         };
 
         var capcom = new Developer
         {
-            Namge = "Capcom",
+            Name = "Capcom",
             Description = "Desarrolladora japonesa de videojuegos."
         };
 
         var squareEnix = new Developer
         {
-            Namge = "Square Enix",
+            Name = "Square Enix",
             Description = "Desarrolladora de RPG y juegos de aventura."
         };
 
@@ -47,19 +47,19 @@ public static class DbInitializer
         // EDITORAS
         var nintendoPublisher = new Publisher
         {
-            Namge = "Nintendo",
+            Name = "Nintendo",
             Description = "Editora de videojuegos y fabricante de consolas."
         };
 
         var capcomPublisher = new Publisher
         {
-            Namge = "Capcom",
+            Name = "Capcom",
             Description = "Editora japonesa de videojuegos."
         };
 
         var squareEnixPublisher = new Publisher
         {
-            Namge = "Square Enix",
+            Name = "Square Enix",
             Description = "Editora especializada en juegos de rol."
         };
 
@@ -72,32 +72,32 @@ public static class DbInitializer
         var ds = new VideoConsole
         {
             Name = "Nintendo DS",
-            ReleseDate = new DateOnly(2004, 11, 21),
-            PriceReleaseDate = 149.99m,
+            ReleaseDate = new DateOnly(2004, 11, 21),
+            ReleasePrice = 149.99m,
             Description = "Consola portátil de doble pantalla."
         };
 
         var ps2 = new VideoConsole
         {
             Name = "PlayStation 2",
-            ReleseDate = new DateOnly(2000, 3, 4),
-            PriceReleaseDate = 449.99m,
+            ReleaseDate = new DateOnly(2000, 3, 4),
+            ReleasePrice = 449.99m,
             Description = "Consola doméstica de Sony."
         };
 
         var threeDS = new VideoConsole
         {
             Name = "Nintendo 3DS",
-            ReleseDate = new DateOnly(2011, 2, 26),
-            PriceReleaseDate = 249.99m,
+            ReleaseDate = new DateOnly(2011, 2, 26),
+            ReleasePrice = 249.99m,
             Description = "Consola portátil con efecto 3D."
         };
 
         var switchConsole = new VideoConsole
         {
             Name = "Nintendo Switch",
-            ReleseDate = new DateOnly(2017, 3, 3),
-            PriceReleaseDate = 329.99m,
+            ReleaseDate = new DateOnly(2017, 3, 3),
+            ReleasePrice = 329.99m,
             Description = "Consola híbrida portátil y doméstica."
         };
 
@@ -193,16 +193,15 @@ public static class DbInitializer
             new Videogame
             {
                 Name = "Pokemon Platinum",
-                ReleseDate = new DateOnly(2008, 9, 13),
-                PriceReleaseDate = 39.99m,
+                ReleaseDate = new DateOnly(2008, 9, 13),
+                ReleasePrice = 39.99m,
                 Description = "Aventura de captura y entrenamiento de criaturas.",
                 Players = 1,
                 DeveloperId = gameFreak.Id,
                 PublisherId = nintendoPublisher.Id,
-                Publiser = nintendoPublisher,
+                Publisher = nintendoPublisher,
                 Developer = gameFreak,
-                VideoConsoleId = ds.Id,
-                VideoConsole = ds,
+                VideoConsoles = new List<VideoConsole> { ds },
                 Genres = new List<Genre> { rpg, adventure },
                 Languages = new List<Language>
                 {
@@ -215,16 +214,15 @@ public static class DbInitializer
             new Videogame
             {
                 Name = "Animal Crossing Wild World",
-                ReleseDate = new DateOnly(2005, 11, 23),
-                PriceReleaseDate = 39.99m,
+                ReleaseDate = new DateOnly(2005, 11, 23),
+                ReleasePrice = 39.99m,
                 Description = "Simulador de vida en un pueblo.",
                 Players = 4,
                 DeveloperId = nintendo.Id,
                 PublisherId = nintendoPublisher.Id,
-                Publiser = nintendoPublisher,
+                Publisher = nintendoPublisher,
                 Developer = nintendo,
-                VideoConsoleId = ds.Id,
-                VideoConsole = ds,
+                VideoConsoles = new List<VideoConsole> { ds },
                 Genres = new List<Genre> { simulation },
                 Languages = new List<Language>
                 {
@@ -237,16 +235,15 @@ public static class DbInitializer
             new Videogame
             {
                 Name = "Kingdom Hearts",
-                ReleseDate = new DateOnly(2002, 3, 28),
-                PriceReleaseDate = 59.99m,
+                ReleaseDate = new DateOnly(2002, 3, 28),
+                ReleasePrice = 59.99m,
                 Description = "RPG de acción que mezcla personajes de Disney y Square.",
                 Players = 1,
                 DeveloperId = squareEnix.Id,
                 PublisherId = squareEnixPublisher.Id,
-                Publiser = squareEnixPublisher,
+                Publisher = squareEnixPublisher,
                 Developer = squareEnix,
-                VideoConsoleId = ps2.Id,
-                VideoConsole = ps2,
+                VideoConsoles = new List<VideoConsole> { ps2 },
                 Genres = new List<Genre> { rpg, action, adventure },
                 Languages = new List<Language>
                 {
@@ -259,16 +256,15 @@ public static class DbInitializer
             new Videogame
             {
                 Name = "Resident Evil 4",
-                ReleseDate = new DateOnly(2005, 1, 11),
-                PriceReleaseDate = 59.99m,
+                ReleaseDate = new DateOnly(2005, 1, 11),
+                ReleasePrice = 59.99m,
                 Description = "Aventura de acción y terror.",
                 Players = 1,
                 DeveloperId = capcom.Id,
                 PublisherId = capcomPublisher.Id,
-                Publiser = capcomPublisher,
+                Publisher = capcomPublisher,
                 Developer = capcom,
-                VideoConsoleId = ps2.Id,
-                VideoConsole = ps2,
+                VideoConsoles = new List<VideoConsole> { ps2 },
                 Genres = new List<Genre> { action, horror },
                 Languages = new List<Language>
                 {
@@ -281,16 +277,15 @@ public static class DbInitializer
             new Videogame
             {
                 Name = "Pokemon X",
-                ReleseDate = new DateOnly(2013, 10, 12),
-                PriceReleaseDate = 39.99m,
+                ReleaseDate = new DateOnly(2013, 10, 12),
+                ReleasePrice = 39.99m,
                 Description = "Aventura de Pokemon ambientada en Kalos.",
                 Players = 4,
                 DeveloperId = gameFreak.Id,
                 PublisherId = nintendoPublisher.Id,
-                Publiser = nintendoPublisher,
+                Publisher = nintendoPublisher,
                 Developer = gameFreak,
-                VideoConsoleId = threeDS.Id,
-                VideoConsole = threeDS,
+                VideoConsoles = new List<VideoConsole> { threeDS },
                 Genres = new List<Genre> { rpg, adventure },
                 Languages = new List<Language>
                 {
@@ -303,16 +298,15 @@ public static class DbInitializer
             new Videogame
             {
                 Name = "Fantasy Life",
-                ReleseDate = new DateOnly(2012, 12, 27),
-                PriceReleaseDate = 39.99m,
+                ReleaseDate = new DateOnly(2012, 12, 27),
+                ReleasePrice = 39.99m,
                 Description = "RPG con oficios, fabricación y exploración.",
                 Players = 3,
                 DeveloperId = nintendo.Id,
                 PublisherId = nintendoPublisher.Id,
-                Publiser = nintendoPublisher,
+                Publisher = nintendoPublisher,
                 Developer = nintendo,
-                VideoConsoleId = threeDS.Id,
-                VideoConsole = threeDS,
+                VideoConsoles = new List<VideoConsole> { threeDS },
                 Genres = new List<Genre> { rpg, adventure, simulation },
                 Languages = new List<Language>
                 {
@@ -325,16 +319,15 @@ public static class DbInitializer
             new Videogame
             {
                 Name = "The Legend of Zelda Breath of the Wild",
-                ReleseDate = new DateOnly(2017, 3, 3),
-                PriceReleaseDate = 59.99m,
+                ReleaseDate = new DateOnly(2017, 3, 3),
+                ReleasePrice = 59.99m,
                 Description = "Aventura de mundo abierto.",
                 Players = 1,
                 DeveloperId = nintendo.Id,
                 PublisherId = nintendoPublisher.Id,
-                Publiser = nintendoPublisher,
+                Publisher = nintendoPublisher,
                 Developer = nintendo,
-                VideoConsoleId = switchConsole.Id,
-                VideoConsole = switchConsole,
+                VideoConsoles = new List<VideoConsole>{switchConsole},
                 Genres = new List<Genre> { adventure, action },
                 Languages = new List<Language>
                 {
@@ -347,16 +340,15 @@ public static class DbInitializer
             new Videogame
             {
                 Name = "Resident Evil Village",
-                ReleseDate = new DateOnly(2021, 5, 7),
-                PriceReleaseDate = 59.99m,
+                ReleaseDate = new DateOnly(2021, 5, 7),
+                ReleasePrice = 59.99m,
                 Description = "Aventura de terror y supervivencia.",
                 Players = 1,
                 DeveloperId = capcom.Id,
                 PublisherId = capcomPublisher.Id,
-                Publiser = capcomPublisher,
+                Publisher = capcomPublisher,
                 Developer = capcom,
-                VideoConsoleId = switchConsole.Id,
-                VideoConsole = switchConsole,
+                VideoConsoles = new List<VideoConsole> {switchConsole},
                 Genres = new List<Genre> { action, horror },
                 Languages = new List<Language>
                 {
@@ -399,25 +391,25 @@ public static class DbInitializer
             new VideoConsole
             {
                 Name = "Nintendo DS",
-                ReleseDate = new DateOnly(2004, 11, 21),
+                ReleaseDate = new DateOnly(2004, 11, 21),
                 Description = "Consola portátil de Nintendo."
             },
             new VideoConsole
             {
                 Name = "PlayStation 2",
-                ReleseDate = new DateOnly(2000, 3, 4),
+                ReleaseDate = new DateOnly(2000, 3, 4),
                 Description = "Consola doméstica de Sony."
             },
             new VideoConsole
             {
                 Name = "Nintendo 3DS",
-                ReleseDate = new DateOnly(2011, 2, 26),
+                ReleaseDate = new DateOnly(2011, 2, 26),
                 Description = "Consola portátil con pantalla 3D."
             },
             new VideoConsole
             {
                 Name = "Nintendo Switch",
-                ReleseDate = new DateOnly(2017, 3, 3),
+                ReleaseDate = new DateOnly(2017, 3, 3),
                 Description = "Consola híbrida portátil y doméstica."
             }
         );
@@ -436,7 +428,7 @@ public static class DbInitializer
             new Videogame
             {
                 Name = "Pokemon Platinum",
-                ReleseDate = new DateOnly(2008, 9, 13),
+                ReleaseDate = new DateOnly(2008, 9, 13),
                 Description = "Aventura de captura de criaturas.",
 
                 VideoConsole = nintendoDS
@@ -444,7 +436,7 @@ public static class DbInitializer
             new Videogame
             {
                 Name = "Animal Crossing Wild World",
-                ReleseDate = new DateOnly(2005, 11, 23),
+                ReleaseDate = new DateOnly(2005, 11, 23),
                 Description = "Simulador de vida y comunidad.",
 
                 VideoConsole = nintendoDS
@@ -452,7 +444,7 @@ public static class DbInitializer
             new Videogame
             {
                 Name = "New Super Mario Bros",
-                ReleseDate = new DateOnly(2006, 5, 15),
+                ReleaseDate = new DateOnly(2006, 5, 15),
                 Description = "Juego de plataformas en dos dimensiones.",
 
                 VideoConsole = nintendoDS
@@ -462,7 +454,7 @@ public static class DbInitializer
             new Videogame
             {
                 Name = "Kingdom Hearts",
-                ReleseDate = new DateOnly(2002, 3, 28),
+                ReleaseDate = new DateOnly(2002, 3, 28),
                 Description = "RPG de acción y aventura.",
 
                 VideoConsole = playStation2
@@ -470,7 +462,7 @@ public static class DbInitializer
             new Videogame
             {
                 Name = "The Sims 2",
-                ReleseDate = new DateOnly(2004, 9, 14),
+                ReleaseDate = new DateOnly(2004, 9, 14),
                 Description = "Simulador de vida.",
 
                 VideoConsole = playStation2
@@ -478,7 +470,7 @@ public static class DbInitializer
             new Videogame
             {
                 Name = "Resident Evil 4",
-                ReleseDate = new DateOnly(2005, 1, 11),
+                ReleaseDate = new DateOnly(2005, 1, 11),
                 Description = "Aventura de terror y supervivencia.",
 
                 VideoConsole = playStation2
@@ -488,7 +480,7 @@ public static class DbInitializer
             new Videogame
             {
                 Name = "Fantasy Life",
-                ReleseDate = new DateOnly(2012, 12, 27),
+                ReleaseDate = new DateOnly(2012, 12, 27),
                 Description = "RPG con oficios, exploración y fabricación.",
 
                 VideoConsole = nintendo3DS
@@ -496,7 +488,7 @@ public static class DbInitializer
             new Videogame
             {
                 Name = "Animal Crossing New Leaf",
-                ReleseDate = new DateOnly(2012, 11, 8),
+                ReleaseDate = new DateOnly(2012, 11, 8),
                 Description = "Simulador de vida en un pueblo.",
 
                 VideoConsole = nintendo3DS
@@ -504,7 +496,7 @@ public static class DbInitializer
             new Videogame
             {
                 Name = "Super Mario 3D Land",
-                ReleseDate = new DateOnly(2011, 11, 3),
+                ReleaseDate = new DateOnly(2011, 11, 3),
                 Description = "Juego de plataformas en 3D.",
 
                 VideoConsole = nintendo3DS
@@ -514,7 +506,7 @@ public static class DbInitializer
             new Videogame
             {
                 Name = "Animal Crossing New Horizons",
-                ReleseDate = new DateOnly(2020, 3, 20),
+                ReleaseDate = new DateOnly(2020, 3, 20),
                 Description = "Simulador de vida en una isla.",
 
                 VideoConsole = nintendoSwitch
@@ -522,7 +514,7 @@ public static class DbInitializer
             new Videogame
             {
                 Name = "The Legend of Zelda Breath of the Wild",
-                ReleseDate = new DateOnly(2017, 3, 3),
+                ReleaseDate = new DateOnly(2017, 3, 3),
                 Description = "Aventura de mundo abierto.",
 
                 VideoConsole = nintendoSwitch
@@ -530,7 +522,7 @@ public static class DbInitializer
             new Videogame
             {
                 Name = "Super Mario Odyssey",
-                ReleseDate = new DateOnly(2017, 10, 27),
+                ReleaseDate = new DateOnly(2017, 10, 27),
                 Description = "Aventura y plataformas en 3D.",
 
                 VideoConsole = nintendoSwitch

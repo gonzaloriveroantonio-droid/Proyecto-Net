@@ -16,6 +16,7 @@ public class ApplicationDbContext : DbContext
     public DbSet<Genre> Genres => Set<Genre>();
     public DbSet<Publisher> Publishers => Set<Publisher>();
     public DbSet<SubGenre> SubGenres => Set<SubGenre>();
+    public DbSet<Saga> Sagas => Set<Saga>();
     
     // TABLAS
 
